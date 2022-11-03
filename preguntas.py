@@ -21,8 +21,15 @@ def pregunta_01():
     214
 
     """
-    return
-
+    sumcolum2 = 0
+    with open("data.csv") as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            current_line = line.split(",")
+            sumcolum2 = sumcolum2 + int(current_line[1])
+    return sumcolum2
+    
 
 def pregunta_02():
     """

@@ -46,20 +46,20 @@ def pregunta_02():
     ]
 
     """
-     dict_letras ={}
+    list_tuplas ={}
     with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
             current_line = line.split(",")
             current_line = current_line[0]
-            if current_line in dict_letras:
-                dict_letras[current_line] = dict_letras[current_line]+1
-            else: dict_letras[current_line] = 1
-    dict_letras = sorted(dict_letras.items())              
-          
-    return dict_letras
-   
+            if current_line in list_tuplas:
+                list_tuplas[current_line] = list_tuplas[current_line]+1
+            else: list_tuplas[current_line] = 1
+    list_tuplas = sorted(list_tuplas.items())
+                    
+            
+    return list_tuplas
 
 
 def pregunta_03():
@@ -77,21 +77,21 @@ def pregunta_03():
     ]
 
     """
-    dict_letras ={}
+    list_tuplas ={}
     with open("data.csv") as file:
         for line in file:
             line = line.replace("\n","")
             line = line.replace("\t",",")
             line = line.split(",")
-            linea_letras = line[0]
-            linea_suma = line[1]
-            if linea_letras in dict_letras:
-                dict_letras[linea_letras] = int(dict_letras[linea_letras])+int(linea_suma)
+            linea_letra = line[0]
+            linea_sum = line[1]
+            if linea_letra in list_tuplas:
+                list_tuplas[linea_letra] = int(list_tuplas[linea_letra])+int(linea_sum)
                 
             else: 
-                dict_letras[linea_letras] = linea_suma
-    dict_letras = sorted(dict_letras.items())
-    return dict_letras
+                list_tuplas[linea_letra] = linea_sum
+    list_tuplas = sorted(dict_letra.items())
+    return dict_letra
     
 
 

@@ -46,7 +46,20 @@ def pregunta_02():
     ]
 
     """
-    return
+     dict_letras ={}
+    with open("data.csv") as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            current_line = line.split(",")
+            current_line = current_line[0]
+            if current_line in dict_letras:
+                dict_letras[current_line] = dict_letras[current_line]+1
+            else: dict_letras[current_line] = 1
+    dict_letras = sorted(dict_letras.items())              
+          
+    return dict_letras
+   
 
 
 def pregunta_03():
@@ -64,7 +77,22 @@ def pregunta_03():
     ]
 
     """
-    return
+    dict_letras ={}
+    with open("data.csv") as file:
+        for line in file:
+            line = line.replace("\n","")
+            line = line.replace("\t",",")
+            line = line.split(",")
+            linea_letras = line[0]
+            linea_suma = line[1]
+            if linea_letras in dict_letras:
+                dict_letras[linea_letras] = int(dict_letras[linea_letras])+int(linea_suma)
+                
+            else: 
+                dict_letras[linea_letras] = linea_suma
+    dict_letras = sorted(dict_letras.items())
+    return dict_letras
+    
 
 
 def pregunta_04():

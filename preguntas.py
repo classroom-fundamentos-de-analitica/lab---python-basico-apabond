@@ -21,13 +21,13 @@ def pregunta_01():
     214
 
     """
-    sumcolum2 = 0
-    with open("data.csv") as file:
-        for line in file:
-            line = line.replace("\n","")
-            line = line.replace("\t",",")
-            current_line = line.split(",")
-            sumcolum2 = sumcolum2 + int(current_line[1])
+    file = [row.replace("\n", "") for row in file]
+    file = [row.replace("\t", ",") for row in file]
+    file = [row.split(",") for row in file]
+    suma=0
+    suma=[int(x[1]) for x in file]
+    sumcolum2=sum(suma)
+
     return sumcolum2
     
 

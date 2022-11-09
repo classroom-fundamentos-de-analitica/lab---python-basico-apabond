@@ -47,17 +47,18 @@ def pregunta_02():
     ]
 
     """
-    file = [row.replace("\n", "") for row in file]
-    file = [row.replace("\t", ",") for row in file]
-    file = [row.split(",") for row in file]
-    list_tuplas={}
-    letras=[letra[0] for letra in file]
-    for x in letras:
-        if x in list_tuplas:
-            list_tuplas[x] = list_tuplas[x]+1
-        else:
-            list_tuplas[x] = 1
-    Resultado= sorted(list_tuplas.items())
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        letras=[letra[0] for letra in file]
+        for x in letras:
+            if x in list_tuplas:
+                list_tuplas[x] = list_tuplas[x]+1
+            else:
+                list_tuplas[x] = 1
+        Resultado= sorted(list_tuplas.items())
                    
             
     return Resultado

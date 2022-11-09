@@ -47,20 +47,20 @@ def pregunta_02():
     ]
 
     """
-    list_tuplas ={}
-    with open("data.csv") as file:
-        for line in file:
-            line = line.replace("\n","")
-            line = line.replace("\t",",")
-            current_line = line.split(",")
-            current_line = current_line[0]
-            if current_line in list_tuplas:
-                list_tuplas[current_line] = list_tuplas[current_line]+1
-            else: list_tuplas[current_line] = 1
-    list_tuplas = sorted(list_tuplas.items())
-                    
+    file = [row.replace("\n", "") for row in file]
+    file = [row.replace("\t", ",") for row in file]
+    file = [row.split(",") for row in file]
+    list_tuplas={}
+    letras=[letra[0] for letra in file]
+    for x in letras:
+        if x in list_tuplas:
+            list_tuplas[x] = list_tuplas[x]+1
+        else:
+            list_tuplas[x] = 1
+    Resultado= sorted(list_tuplas.items())
+                   
             
-    return list_tuplas
+    return Resultado
 
 
 def pregunta_03():

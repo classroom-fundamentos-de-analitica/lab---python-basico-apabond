@@ -132,8 +132,8 @@ def pregunta_04():
                 countmonth[month]=countmonth[month]+1
             else:
                 countmonth[month]= 1
-         Registros= sorted(countmonth.items())
-    return Registros
+         Resp= sorted(countmonth.items())
+    return Resp
 
 
 def pregunta_05():

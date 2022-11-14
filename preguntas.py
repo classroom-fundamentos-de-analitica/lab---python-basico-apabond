@@ -373,7 +373,11 @@ def pregunta_10():
 
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.split("\t") for row in file]
+        lista = [(row[0],row[3].count(',')+1,row[4].count(',')+1) for row in file]
+    return lista
 
 
 def pregunta_11():

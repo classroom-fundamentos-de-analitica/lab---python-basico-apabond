@@ -326,7 +326,33 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        l=[]
+        for line in file:
+            for x in line:
+                if ":" in x:
+                    l.append(x)
+        list=[]
+        for x in l:
+            list.append([x[0:3],int(x[4:6])])
+            
+        list_tuplas={}
+        letras=[letra[0] for letra in list]
+        for x in letras:
+            if x in list_tuplas:
+                list_tuplas[x] = list_tuplas[x]+1
+            else:
+                list_tuplas[x] = 1
+        keys = list_tuplas.keys()
+        sorted_keys = sorted(keys)
+        sorted_dict = {}
+        for key in sorted_keys:
+            sorted_dict[key] = list_tuplas[key]
+            
+    return sorted_dict
 
 
 def pregunta_10():

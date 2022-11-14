@@ -246,7 +246,20 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=int(line[1])
+            if rownum in list_tuplas:
+                list_tuplas[rownum] = list_tuplas[rownum]+ [rowletras]
+            else:
+                list_tuplas[rownum] = [rowletras]
+        resul= sorted(list_tuplas.items())
+    return resul
 
 
 def pregunta_08():

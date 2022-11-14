@@ -119,7 +119,21 @@ def pregunta_04():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        countmonth={}
+        date=[x[2] for x in file]
+        for line in date:
+            line=line.split("-")
+            month=line[1]
+            if month in countmonth:
+                countmonth[month]=countmonth[month]+1
+            else:
+                countmonth[month]= 1
+         Registros= sorted(countmonth.items())
+    return Registros
 
 
 def pregunta_05():

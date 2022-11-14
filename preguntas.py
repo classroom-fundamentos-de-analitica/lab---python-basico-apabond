@@ -79,21 +79,21 @@ def pregunta_03():
     ]
 
     """
-    list_tuplas ={}
+    
     with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
         for line in file:
-            line = line.replace("\n","")
-            line = line.replace("\t",",")
-            line = line.split(",")
-            linea_letra = line[0]
-            linea_sum = line[1]
-            if linea_letra in list_tuplas:
-                list_tuplas[linea_letra] = int(list_tuplas[linea_letra])+int(linea_sum)
-                
-            else: 
-                list_tuplas[linea_letra] = linea_sum
-    list_tuplas = sorted(dict_letra.items())
-    return dict_letra
+            rowletras=line[0]
+            rownum=line[1] 
+            if rowletras in list_tuplas:
+                list_tuplas[rowletras] = list_tuplas[rowletras]+int(rownum)
+            else:
+                list_tuplas[rowletras] = int(rownum)
+        Resul= sorted(list_tuplas.items())
+    return Resul
     
 
 

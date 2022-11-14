@@ -284,7 +284,26 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=int(line[1])
+            if rownum in list_tuplas:
+                list_tuplas[rownum] = list_tuplas[rownum]+ [rowletras] 
+            else:
+                list_tuplas[rownum] = [rowletras]
+        resul= sorted(list_tuplas.items())
+        lista=[]
+        for x in resul:
+            letter=x[1]
+            letter=set(letter)
+            letter=sorted(letter)
+            lista.append((x[0],letter))
+    return lista
 
 
 def pregunta_09():

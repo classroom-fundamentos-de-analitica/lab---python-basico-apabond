@@ -193,7 +193,36 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        l=[]
+        for line in file:
+            for x in line:
+                if ":" in x:
+                    l.append(x)
+        list=[]
+        for x in l:
+            list.append((x[0:3],int(x[4:6])))
+            
+        list_tuplas={}
+        for x in list:
+            letras=x[0]
+            num=x[1]
+            if letras in list_tuplas:
+                list_tuplas[letras].append(num)
+            else: list_tuplas[letras] = [num]
+                
+        for key in list_tuplas: 
+            list_tuplas[key] = min(list_tuplas[key]), max(list_tuplas[key])
+            
+        list_tuplas = sorted(list_tuplas.items())
+        
+        result=[]
+        for item in list_tuplas:
+            result.append((item[0], int(item[1][0]), int(item[1][1])))
+    return result
 
 
 def pregunta_07():

@@ -151,7 +151,24 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=line[1]
+            if rowletras in list_tuplas:
+                list_tuplas[rowletras].append(rownum)
+            else: list_tuplas[rowletras] = [rownum]
+        for key in list_tuplas: 
+            list_tuplas[key] = max(list_tuplas[key]), min(list_tuplas[key])
+        list_tuplas = sorted(list_tuplas.items())
+        result=[]
+        for item in list_tuplas:
+            result.append((item[0], int(item[1][0]), int(item[1][1])))
+    return result
 
 
 def pregunta_06():

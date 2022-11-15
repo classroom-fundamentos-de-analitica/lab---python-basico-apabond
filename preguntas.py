@@ -398,7 +398,23 @@ def pregunta_11():
 
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.split("\t") for row in file]
+        dictionary={}
+        for row in file:
+            col2 = int(row[1])
+            col4 = row[3]
+            for letra in col4.split(','):
+                if letra in dictionary.keys():
+                    dictionary[letra] += col2
+                else: dictionary[letra] = col2
+        dict2 = sorted(dictionary.items())
+        resul = {}
+        for key in dict2:
+            resul[key[0]] = key[1]
+
+    return resul
 
 
 def pregunta_12():

@@ -432,4 +432,26 @@ def pregunta_12():
     }
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.split("\t") for row in file]
+        dictionary={}
+        for row in file:
+            col1 = row[0]
+            col5 = row[4]
+            col5 = col5.replace(":",",")
+            col5=col5.split(",")
+            
+            num = 0
+            for item in col5:
+                if item.isnumeric() == True: 
+                    num = num + int(item)
+            if col1 in dictionary:
+                dictionary[col1] += num
+            else: 
+              dictionary[col1] = num
+        dict2= {}
+        lista = sorted(dictionary.items())
+        for key in lista: dict2[key[0]]=key[1]
+
+    return dict2

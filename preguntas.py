@@ -21,8 +21,16 @@ def pregunta_01():
     214
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        suma=0
+        suma=[int(x[1]) for x in file]
+        sumcolum2=sum(suma)
 
+    return sumcolum2
+    
 
 def pregunta_02():
     """
@@ -39,7 +47,21 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        letras=[letra[0] for letra in file]
+        for x in letras:
+            if x in list_tuplas:
+                list_tuplas[x] = list_tuplas[x]+1
+            else:
+                list_tuplas[x] = 1
+        Resultado= sorted(list_tuplas.items())
+                   
+            
+    return Resultado
 
 
 def pregunta_03():
@@ -57,7 +79,22 @@ def pregunta_03():
     ]
 
     """
-    return
+    
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=line[1] 
+            if rowletras in list_tuplas:
+                list_tuplas[rowletras] = list_tuplas[rowletras]+int(rownum)
+            else:
+                list_tuplas[rowletras] = int(rownum)
+        Resul= sorted(list_tuplas.items())
+    return Resul
+    
 
 
 def pregunta_04():
@@ -82,7 +119,21 @@ def pregunta_04():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        countmonth={}
+        date=[x[2] for x in file]
+        for line in date:
+            line=line.split("-")
+            month=line[1]
+            if month in countmonth:
+                countmonth[month]=countmonth[month]+1
+            else:
+                countmonth[month]= 1
+        Resp= sorted(countmonth.items())
+    return Resp
 
 
 def pregunta_05():
@@ -100,7 +151,24 @@ def pregunta_05():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=line[1]
+            if rowletras in list_tuplas:
+                list_tuplas[rowletras].append(rownum)
+            else: list_tuplas[rowletras] = [rownum]
+        for key in list_tuplas: 
+            list_tuplas[key] = max(list_tuplas[key]), min(list_tuplas[key])
+        list_tuplas = sorted(list_tuplas.items())
+        result=[]
+        for item in list_tuplas:
+            result.append((item[0], int(item[1][0]), int(item[1][1])))
+    return result
 
 
 def pregunta_06():
@@ -125,7 +193,36 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        l=[]
+        for line in file:
+            for x in line:
+                if ":" in x:
+                    l.append(x)
+        list=[]
+        for x in l:
+            list.append((x[0:3],int(x[4:6])))
+            
+        list_tuplas={}
+        for x in list:
+            letras=x[0]
+            num=x[1]
+            if letras in list_tuplas:
+                list_tuplas[letras].append(num)
+            else: list_tuplas[letras] = [num]
+                
+        for key in list_tuplas: 
+            list_tuplas[key] = min(list_tuplas[key]), max(list_tuplas[key])
+            
+        list_tuplas = sorted(list_tuplas.items())
+        
+        result=[]
+        for item in list_tuplas:
+            result.append((item[0], int(item[1][0]), int(item[1][1])))
+    return result
 
 
 def pregunta_07():
@@ -149,7 +246,20 @@ def pregunta_07():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=int(line[1])
+            if rownum in list_tuplas:
+                list_tuplas[rownum] = list_tuplas[rownum]+ [rowletras]
+            else:
+                list_tuplas[rownum] = [rowletras]
+        resul= sorted(list_tuplas.items())
+    return resul
 
 
 def pregunta_08():
@@ -174,7 +284,26 @@ def pregunta_08():
     ]
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        list_tuplas={}
+        for line in file:
+            rowletras=line[0]
+            rownum=int(line[1])
+            if rownum in list_tuplas:
+                list_tuplas[rownum] = list_tuplas[rownum]+ [rowletras] 
+            else:
+                list_tuplas[rownum] = [rowletras]
+        resul= sorted(list_tuplas.items())
+        lista=[]
+        for x in resul:
+            letter=x[1]
+            letter=set(letter)
+            letter=sorted(letter)
+            lista.append((x[0],letter))
+    return lista
 
 
 def pregunta_09():
@@ -197,7 +326,33 @@ def pregunta_09():
     }
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.replace("\t", ",") for row in file]
+        file = [row.split(",") for row in file]
+        l=[]
+        for line in file:
+            for x in line:
+                if ":" in x:
+                    l.append(x)
+        list=[]
+        for x in l:
+            list.append([x[0:3],int(x[4:6])])
+            
+        list_tuplas={}
+        letras=[letra[0] for letra in list]
+        for x in letras:
+            if x in list_tuplas:
+                list_tuplas[x] = list_tuplas[x]+1
+            else:
+                list_tuplas[x] = 1
+        keys = list_tuplas.keys()
+        sorted_keys = sorted(keys)
+        sorted_dict = {}
+        for key in sorted_keys:
+            sorted_dict[key] = list_tuplas[key]
+            
+    return sorted_dict
 
 
 def pregunta_10():
@@ -218,7 +373,11 @@ def pregunta_10():
 
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.split("\t") for row in file]
+        lista = [(row[0],row[3].count(',')+1,row[4].count(',')+1) for row in file]
+    return lista
 
 
 def pregunta_11():
@@ -239,7 +398,23 @@ def pregunta_11():
 
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.split("\t") for row in file]
+        dictionary={}
+        for row in file:
+            col2 = int(row[1])
+            col4 = row[3]
+            for letra in col4.split(','):
+                if letra in dictionary.keys():
+                    dictionary[letra] += col2
+                else: dictionary[letra] = col2
+        dict2 = sorted(dictionary.items())
+        resul = {}
+        for key in dict2:
+            resul[key[0]] = key[1]
+
+    return resul
 
 
 def pregunta_12():
@@ -257,4 +432,26 @@ def pregunta_12():
     }
 
     """
-    return
+    with open("data.csv") as file:
+        file = [row.replace("\n", "") for row in file]
+        file = [row.split("\t") for row in file]
+        dictionary={}
+        for row in file:
+            col1 = row[0]
+            col5 = row[4]
+            col5 = col5.replace(":",",")
+            col5=col5.split(",")
+            
+            num = 0
+            for item in col5:
+                if item.isnumeric() == True: 
+                    num = num + int(item)
+            if col1 in dictionary:
+                dictionary[col1] += num
+            else: 
+              dictionary[col1] = num
+        dict2= {}
+        lista = sorted(dictionary.items())
+        for key in lista: dict2[key[0]]=key[1]
+
+    return dict2
